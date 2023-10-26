@@ -19,12 +19,18 @@ function App() {
     setTodos((preveTodos) => {
       return preveTodos.concat(newTodo);
     })
-  }
+  };
+
+  const removeTodoHandler = (todoId: string) => {
+    setTodos((preveTodos) => {
+      return preveTodos.filter((todo) => todo.id !== todoId);
+    })
+  };
 
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos items={todos} onRemoveTodo={removeTodoHandler} />
     </div>
   );
 }
